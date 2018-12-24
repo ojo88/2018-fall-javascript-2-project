@@ -64,8 +64,9 @@ function toDosHtml() {
 function toDoHtml(toDo) {
   return `
     <div class="card">
-      <div class="card-body">
+      <div class="card-body"> 
         ${toDo.day}
+        <button type="button" class="btn btn-info">Details</button>
       </div>
     </div>
     `
