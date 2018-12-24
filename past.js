@@ -66,7 +66,7 @@ function toDoHtml(toDo) {
     <div class="card">
       <div class="card-body"> 
         ${toDo.day}
-        <button type="button" class="btn btn-info">Details</button>
+        <button type="button" class="btn btn-info" onclick="showDetails()" >Details</button>
       </div>
     </div>
     `
@@ -75,6 +75,10 @@ function toDoHtml(toDo) {
 function render() {
   var element = document.getElementById("past-to-dos")
   element.innerHTML = toDosHtml()
+}
+
+function showDetails() {
+$("#past-to-dos").hide();
 }
 
 render()
