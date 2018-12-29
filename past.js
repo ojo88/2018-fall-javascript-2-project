@@ -1,4 +1,4 @@
-var pastToDos = [
+var pastToDos = [ 
   {
     day: "2018-12-01",
     toDos: [
@@ -66,7 +66,13 @@ function toDoHtml(toDo) {
     <div class="card">
       <div class="card-body"> 
         ${toDo.day}
-        <button type="button" class="btn btn-info" onclick="showDetails()" >Details</button>
+        <button type="button" class="btn btn-info" onclick="showDetails()">Details</button>
+      </div>
+      <div id="pastDetails" class="card-body">
+        <ul>
+          <span class="badge badge-primary badge-pill">${toDo.toDos[0].level}</span>
+          <span>${toDo.toDos[0].name}</span>
+        </ul>
       </div>
     </div>
     `
@@ -78,7 +84,7 @@ function render() {
 }
 
 function showDetails() {
-$("#past-to-dos").hide();
+$("#pastDetails").toggle();
 }
 
 render()
