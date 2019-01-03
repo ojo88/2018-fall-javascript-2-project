@@ -55,23 +55,57 @@ var pastToDos = [
   }
 ]
 
+var cardIndex = [];
+var index = 0;
+
 function toDosHtml() {
   return pastToDos
-    .map(toDo => toDoHtml(toDo))
+    .map(toDo => {index++; return toDoHtml(toDo);})
     .join("")
 }
+
+// function pastToDosHtml(pastToDoIndex) {
+//   var details = pastToDos
+//     .map(toDo => pastToDoHtml(toDo))
+//     .join("")
+
+//     return details
+// }
+
+// function pastToDoHtml(toDo) {
+//   return `
+//     <li>
+//       <span class="badge badge-primary badge-pill">${toDo.toDos.level}</span>
+//       <span>${toDo.toDos.name}</span>
+//     </li>`
+
+// }
 
 function toDoHtml(toDo) {
   return `
     <div class="card">
       <div class="card-body"> 
         ${toDo.day}
-        <button type="button" class="btn btn-info" onclick="showDetails()">Details</button>
+        <button id="card${index}" type="button" class="btn btn-info" onclick="showDetails(pastDetails${index})">Details</button>
       </div>
-      <div id="pastDetails" class="card-body">
-        <ul>
-          <span class="badge badge-primary badge-pill">${toDo.toDos[0].level}</span>
-          <span>${toDo.toDos[0].name}</span>
+      <div class="card-body">
+        <ul id="pastDetails${index}">
+          <li>
+            <span class="badge badge-primary badge-pill">${toDo.toDos[0].level}</span>
+            <span>${toDo.toDos[0].done}</span>
+          </li>
+          <li>
+            <span class="badge badge-primary badge-pill">${toDo.toDos[1].level}</span>
+            <span>${toDo.toDos[1].done}</span>
+          </li>
+          <li>
+            <span class="badge badge-primary badge-pill">${toDo.toDos[2].level}</span>
+            <span>${toDo.toDos[2].done}</span>
+          </li>
+          <li>
+            <span class="badge badge-primary badge-pill">${toDo.toDos[3].level}</span>
+            <span>${toDo.toDos[3].done}</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -83,11 +117,19 @@ function render() {
   element.innerHTML = toDosHtml()
 }
 
-function showDetails() {
-$("#pastDetails").toggle();
+// function renderDetails() {
+//   var element = document.getElementById("pastDetails")
+//   element.innerHTML = pastTodosHtml(index)
+// }
+
+function showDetails(index) {
+  //var detailCard = document.getElementById(`pastDetails${index}`)
+  //$(`#pastDetails${index}`).toggle();
+  $(index).toggle();
 }
 
 render()
+// renderDetails()
 
 console.log(pastToDos.flatMap(toDo => toDo.toDos))
 console.log(pastToDos.flatMap(toDo => toDo.toDos.map(x => x.done)))
