@@ -64,24 +64,9 @@ function toDosHtml() {
     .join("")
 }
 
-// function pastToDosHtml(pastToDoIndex) {
-//   var details = pastToDos
-//     .map(toDo => pastToDoHtml(toDo))
-//     .join("")
-
-//     return details
-// }
-
-// function pastToDoHtml(toDo) {
-//   return `
-//     <li>
-//       <span class="badge badge-primary badge-pill">${toDo.toDos.level}</span>
-//       <span>${toDo.toDos.name}</span>
-//     </li>`
-
-// }
-
 function toDoHtml(toDo) {
+  //var highlight = toDo.toDos[1].highlight ? 'highlight': ''
+  //var highlight = toDo.map( x => {x.highlight ? 'highlight' : ''} )
   return `
     <div class="card">
       <div class="card-body"> 
@@ -92,19 +77,19 @@ function toDoHtml(toDo) {
         <ul id="pastDetails${index}">
           <li>
             <span class="badge badge-primary badge-pill">${toDo.toDos[0].level}</span>
-            <span>${toDo.toDos[0].done}</span>
+            <span>${toDo.toDos[0].name}</span>
           </li>
           <li>
             <span class="badge badge-primary badge-pill">${toDo.toDos[1].level}</span>
-            <span>${toDo.toDos[1].done}</span>
+            <span>${toDo.toDos[1].name}</span>
           </li>
           <li>
             <span class="badge badge-primary badge-pill">${toDo.toDos[2].level}</span>
-            <span>${toDo.toDos[2].done}</span>
+            <span>${toDo.toDos[2].name}</span>
           </li>
           <li>
             <span class="badge badge-primary badge-pill">${toDo.toDos[3].level}</span>
-            <span>${toDo.toDos[3].done}</span>
+            <span>${toDo.toDos[3].name}</span>
           </li>
         </ul>
       </div>
