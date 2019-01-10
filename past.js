@@ -58,6 +58,15 @@ var pastToDos = [
 var cardIndex = [];
 var index = 0;
 
+function showTopPriority(toDo) {
+  //code to find top priortiy
+  //var priority = pastToDos.toDos.for what i was originally trying
+  var priority = toDo.toDos.forEach(element => {element.priorityTag 
+  }).push;
+
+
+
+}
 function toDosHtml() {
   return pastToDos
     .map(toDo => {index++; return toDoHtml(toDo);})
@@ -65,8 +74,7 @@ function toDosHtml() {
 }
 
 function toDoHtml(toDo) {
-  //var highlight = toDo.toDos[1].highlight ? 'highlight': ''
-  //var highlight = toDo.map( x => {x.highlight ? 'highlight' : ''} )
+  //var priortity = showTopPriority(toDo);
   return `
     <div class="card">
       <div class="card-body"> 
@@ -102,14 +110,8 @@ function render() {
   element.innerHTML = toDosHtml()
 }
 
-// function renderDetails() {
-//   var element = document.getElementById("pastDetails")
-//   element.innerHTML = pastTodosHtml(index)
-// }
-
 function showDetails(index) {
-  //var detailCard = document.getElementById(`pastDetails${index}`)
-  //$(`#pastDetails${index}`).toggle();
+
   $(index).toggle();
 }
 
