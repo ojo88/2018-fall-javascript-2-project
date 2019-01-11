@@ -81,7 +81,10 @@ function showTopPriority(toDo) {
  }
 function toDosHtml() {
   return pastToDos
-    .map(toDo => {index++; return toDoHtml(toDo);})
+    .map(toDo => {
+        index++; 
+        return toDoHtml(toDo);
+      })
     .join("")
 }
 
@@ -97,6 +100,7 @@ function toDoHtml(toDo) {
       <div class="card-body">
         <ul id="pastDetails${index}">
         <h3>Top priority for the day: ${topPriority}</h3>
+        <div id="progressBarId${index}" class="progress"></div>
           <li>
             <span class="badge badge-primary badge-pill">${toDo.toDos[0].level}</span>
             <span>${toDo.toDos[0].name}</span>
@@ -129,9 +133,29 @@ function showDetails(index) {
   $(index).toggle();
 }
 
-render()
+function showPercentComplete(){
+  var progressNumber = 0;
+  var progressBar = "";
+  var progress = "";
+  var toDos = "";
+  var doneToDos = []
 
+  doneToDos = pastToDos.map(toDo => toDo.toDos.map(x => x.done))
+  console.log(doneToDos[0])
+
+  for( var i = 1; i <= pastToDos.length; i++) {
+
+    progressNumber = ((doneToDos[i-1].filter(t => t).length) / doneToDos[i-1].length) * 100;
+
+    progressBar = `<div class="progress-bar" role="progressbar" style="width: ${progressNumber}%" aria-valuenow="${progressNumber}" aria-valuemin="0" aria-valuemax="100"></div>`
+    progress = document.getElementById("progressBarId" + i)
+    progress.innerHTML = progressBar
+
+    }
+   }
+
+render()
+showPercentComplete()
 
 console.log(pastToDos.flatMap(toDo => toDo.toDos))
 console.log(pastToDos.flatMap(toDo => toDo.toDos.map(x => x.done)))
-
