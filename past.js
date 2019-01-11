@@ -57,13 +57,16 @@ var pastToDos = [
 
 var cardIndex = [];
 var index = 0;
+//var priority = [];
 
 function showTopPriority(toDo) {
   //code to find top priortiy
-  //var priority = pastToDos.toDos.for what i was originally trying
-  var priority = toDo.toDos.forEach(element => {element.priorityTag 
-  }).push;
+   var priority = [];
 
+  toDo.toDos.forEach(toDos => {
+    priority.push(toDos.priorityTag)
+  })
+  console.log(priority);
 
 
 }
@@ -75,6 +78,7 @@ function toDosHtml() {
 
 function toDoHtml(toDo) {
   //var priortity = showTopPriority(toDo);
+  showTopPriority(toDo)
   return `
     <div class="card">
       <div class="card-body"> 
@@ -116,7 +120,8 @@ function showDetails(index) {
 }
 
 render()
-// renderDetails()
+
 
 console.log(pastToDos.flatMap(toDo => toDo.toDos))
 console.log(pastToDos.flatMap(toDo => toDo.toDos.map(x => x.done)))
+//console.log(priority)
