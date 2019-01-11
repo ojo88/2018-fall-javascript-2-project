@@ -60,13 +60,11 @@ var index = 0;
 
 
 function showTopPriority(toDo) {
-  //code to find top priortiy
    var priority = [];
 
   toDo.toDos.forEach(toDos => {
     priority.push(toDos.priorityTag)
   })
-  //console.log(priority);
 
   var countedPriority = priority.reduce((allPriorites, priority) => {
       if(priority in allPriorites){
@@ -77,12 +75,9 @@ function showTopPriority(toDo) {
       }
       return allPriorites;
   }, {});
-
-  //console.log(countedPriority)
   
   return Object.keys(countedPriority).reduce((a, b) => countedPriority[a] > countedPriority[b] ? a : b);
 
-  //console.log(what)
  }
 function toDosHtml() {
   return pastToDos
@@ -92,7 +87,7 @@ function toDosHtml() {
 
 function toDoHtml(toDo) {
   var topPriority = showTopPriority(toDo);
-  //showTopPriority(toDo)
+
   return `
     <div class="card">
       <div class="card-body"> 
@@ -100,8 +95,8 @@ function toDoHtml(toDo) {
         <button id="card${index}" type="button" class="btn btn-info" onclick="showDetails(pastDetails${index})">Details</button>
       </div>
       <div class="card-body">
-        <h3>Top priority for the day: ${topPriority}</h3>
         <ul id="pastDetails${index}">
+        <h3>Top priority for the day: ${topPriority}</h3>
           <li>
             <span class="badge badge-primary badge-pill">${toDo.toDos[0].level}</span>
             <span>${toDo.toDos[0].name}</span>
@@ -139,4 +134,4 @@ render()
 
 console.log(pastToDos.flatMap(toDo => toDo.toDos))
 console.log(pastToDos.flatMap(toDo => toDo.toDos.map(x => x.done)))
-//console.log(priority)
+
