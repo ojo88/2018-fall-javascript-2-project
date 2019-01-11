@@ -7,3 +7,7 @@
 .highlight {
   background-color: #ffeb3b5e;
 }
+
+ul { 
+  list-style-type: none; 
+}
