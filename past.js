@@ -57,19 +57,32 @@ var pastToDos = [
 
 var cardIndex = [];
 var index = 0;
-//var priority = [];
+
 
 function showTopPriority(toDo) {
   //code to find top priortiy
    var priority = [];
+   var previous = "";
 
   toDo.toDos.forEach(toDos => {
     priority.push(toDos.priorityTag)
   })
   console.log(priority);
 
+  var countedPriority = priority.reduce((allPriorites, priority) => {
+      if(priority in allPriorites){
+        allPriorites[priority]++;
+      }
+      else{
+        allPriorites[priority] = 1;
+      }
+      return allPriorites;
+  }, {});
 
-}
+  console.log(countedPriority)
+  
+
+ }
 function toDosHtml() {
   return pastToDos
     .map(toDo => {index++; return toDoHtml(toDo);})
