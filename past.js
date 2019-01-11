@@ -154,8 +154,20 @@ function showPercentComplete(){
     }
    }
 
+   function showAllPercentComplete() {
+     var allCompleted = pastToDos.flatMap(toDo => toDo.toDos.map(x => x.done));
+
+     progressNumber = ((allCompleted.filter(t => t).length) / allCompleted.length) * 100;
+
+     var progressBar = `<div class="progress-bar" role="progressbar" style="width: ${progressNumber}%" aria-valuenow="${progressNumber}" aria-valuemin="0" aria-valuemax="100"></div>`
+     var progress = document.getElementById("progressBarIdGlobal")
+     progress.innerHTML = progressBar
+
+   }
+
 render()
 showPercentComplete()
+showAllPercentComplete()
 
 console.log(pastToDos.flatMap(toDo => toDo.toDos))
 console.log(pastToDos.flatMap(toDo => toDo.toDos.map(x => x.done)))
