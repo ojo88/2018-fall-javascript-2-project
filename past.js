@@ -98,7 +98,7 @@ function toDoHtml(toDo) {
         <button id="card${index}" type="button" class="btn btn-info" onclick="showDetails(pastDetails${index})">Details</button>
       </div>
       <div class="card-body">
-        <ul id="pastDetails${index}">
+        <ul id="pastDetails${index}" style="display:none;">
         <h3>Top priority for the day: ${topPriority}</h3>
         <div id="progressBarId${index}" class="progress"></div>
           <li>
