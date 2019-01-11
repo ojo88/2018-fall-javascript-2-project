@@ -62,7 +62,6 @@ var index = 0;
 function showTopPriority(toDo) {
   //code to find top priortiy
    var priority = [];
-   var previous = "";
 
   toDo.toDos.forEach(toDos => {
     priority.push(toDos.priorityTag)
@@ -81,7 +80,9 @@ function showTopPriority(toDo) {
 
   console.log(countedPriority)
   
+  var what = Object.keys(countedPriority).reduce((a, b) => countedPriority[a] > countedPriority[b] ? a : b);
 
+  console.log(what)
  }
 function toDosHtml() {
   return pastToDos
@@ -90,7 +91,7 @@ function toDosHtml() {
 }
 
 function toDoHtml(toDo) {
-  //var priortity = showTopPriority(toDo);
+  //var topPriortity = showTopPriority(toDo);
   showTopPriority(toDo)
   return `
     <div class="card">
